@@ -2,3 +2,5 @@ node_modules/
 .next/
 *.db
 .env
+.vercel
+.env*

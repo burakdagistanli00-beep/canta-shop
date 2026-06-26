@@ -38,6 +38,31 @@ export default function AdminDashboard() {
     setOrders((prev) => prev.map((o) => (o.id === id ? { ...o, status } : o)));
   }
 
+  async function kargoyaVer(id) {
+    const res = await fetch("/api/orders/kargo", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ orderId: id }),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      alert(data.error || "Kargoya verilemedi.");
+      return;
+    }
+    setOrders((prev) =>
+      prev.map((o) =>
+        o.id === id
+          ? { ...o, takipNo: data.takipNo, kargoDurumu: "KARGOYA_VERILDI", status: "KARGODA" }
+          : o
+      )
+    );
+    if (data.simulated) {
+      alert(
+        `Simülasyon modunda takip numarası oluşturuldu: ${data.takipNo}\n\nAras Kargo API bilgileri eklendiğinde gerçek gönderi oluşturulacak.`
+      );
+    }
+  }
+
   return (
     <div className="max-w-6xl mx-auto px-6 py-12">
       <div className="flex justify-between items-center mb-8">
@@ -58,6 +83,7 @@ export default function AdminDashboard() {
                 <th>Müşteri</th>
                 <th>Tutar</th>
                 <th>Durum</th>
+                <th>Kargo</th>
                 <th>Tarih</th>
               </tr>
             </thead>
@@ -77,6 +103,21 @@ export default function AdminDashboard() {
                         <option key={k} value={k}>{v}</option>
                       ))}
                     </select>
+                  </td>
+                  <td>
+                    {o.takipNo ? (
+                      <div className="text-xs">
+                        <p className="text-ink/60">Aras Kargo</p>
+                        <p className="font-medium">{o.takipNo}</p>
+                      </div>
+                    ) : (
+                      <button
+                        onClick={() => kargoyaVer(o.id)}
+                        className="text-xs border border-leather text-leather px-2 py-1 hover:bg-leather hover:text-white transition-colors"
+                      >
+                        Kargoya Ver
+                      </button>
+                    )}
                   </td>
                   <td>{new Date(o.createdAt).toLocaleDateString("tr-TR")}</td>
                 </tr>

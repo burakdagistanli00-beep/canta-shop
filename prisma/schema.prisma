@@ -1,3 +1,8 @@
+// Veritabanı şeması.
+// Geliştirme için SQLite kullanılıyor. Canlıya alırken provider'ı "postgresql"
+// yapıp DATABASE_URL'i Postgres bağlantı adresinle değiştirmen yeterli
+// (örn. Supabase, Neon veya Vercel Postgres).
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -19,9 +24,9 @@ model Product {
   name        String
   slug        String      @unique
   description String
-  price       Int
+  price       Int         // kuruş cinsinden (örn. 129900 = 1299.00 TL)
   stock       Int         @default(0)
-  images      String
+  images      String      // JSON string array
   color       String?
   material    String?
   featured    Boolean     @default(false)
@@ -41,9 +46,12 @@ model Order {
   phone         String
   address       String
   city          String
-  totalAmount   Int
+  totalAmount   Int         // kuruş
   status        String      @default("BEKLEMEDE")
-  paymentRef    String?
+  paymentRef    String?     // iyzico işlem referansı
+  cargoFirma    String?     @default("Aras Kargo")
+  takipNo       String?     // Aras Kargo takip numarası
+  kargoDurumu   String?     @default("HAZIRLANIYOR")
   items         OrderItem[]
   createdAt     DateTime    @default(now())
 }
@@ -55,11 +63,11 @@ model OrderItem {
   productId String
   product   Product @relation(fields: [productId], references: [id])
   quantity  Int
-  price     Int
+  price     Int     // sipariş anındaki birim fiyat (kuruş)
 }
 
 model Admin {
   id       String @id @default(cuid())
   email    String @unique
-  password String
+  password String // bcrypt hash
 }

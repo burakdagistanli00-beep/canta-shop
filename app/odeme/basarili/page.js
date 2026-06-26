@@ -9,7 +9,12 @@ export default function OrderSuccessPage({ searchParams }) {
         Sipariş detaylarını e-posta adresine gönderdik. Hazırlık ve kargo süreciyle ilgili
         bilgilendirmeleri aynı adresten alacaksın.
       </p>
-      <a href="/" className="btn-primary inline-block">Koleksiyona Dön</a>
+      <div className="flex gap-3 justify-center">
+        <a href="/" className="btn-primary inline-block">Koleksiyona Dön</a>
+        <a href={`/siparis-takip?orderNo=${orderNo}`} className="border border-ink/20 px-6 py-3 inline-block hover:border-leather">
+          Siparişimi Takip Et
+        </a>
+      </div>
     </div>
   );
 }

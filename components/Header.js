@@ -15,6 +15,7 @@ export default function Header() {
           <Link href="/?kategori=sirt-cantasi" className="hover:text-leather">Sırt Çantası</Link>
           <Link href="/?kategori=el-cantasi" className="hover:text-leather">El Çantası</Link>
           <Link href="/?kategori=seyahat-cantasi" className="hover:text-leather">Seyahat</Link>
+          <Link href="/siparis-takip" className="hover:text-leather">Sipariş Takip</Link>
         </nav>
         <Link href="/sepet" className="relative font-body text-sm border border-ink/20 px-4 py-2 hover:border-leather">
           Sepet
