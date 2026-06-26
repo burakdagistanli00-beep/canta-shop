@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
 const STATUS_LABELS = {
@@ -12,6 +12,14 @@ const STATUS_LABELS = {
 };
 
 export default function SiparisTakipPage() {
+  return (
+    <Suspense fallback={null}>
+      <SiparisTakipIcerik />
+    </Suspense>
+  );
+}
+
+function SiparisTakipIcerik() {
   const searchParams = useSearchParams();
   const [orderNo, setOrderNo] = useState("");
   const [result, setResult] = useState(null);
@@ -86,7 +94,7 @@ export default function SiparisTakipPage() {
                 Takip No: <span className="font-medium">{result.takipNo}</span>
               </p>
               {result.trackingUrl && (
-                <a
+                
                   href={result.trackingUrl}
                   target="_blank"
                   rel="noopener noreferrer"
