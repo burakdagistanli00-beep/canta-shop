@@ -1,14 +1,9 @@
-// Veritabanı şeması.
-// Geliştirme için SQLite kullanılıyor. Canlıya alırken provider'ı "postgresql"
-// yapıp DATABASE_URL'i Postgres bağlantı adresinle değiştirmen yeterli
-// (örn. Supabase, Neon veya Vercel Postgres).
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
