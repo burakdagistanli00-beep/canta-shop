@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --leather: #7a4f3a;
+  --sand: #f3ece2;
+  --ink: #241b15;
+}
+
+body {
+  background: var(--sand);
+  color: var(--ink);
+}
+
+.btn-primary {
+  background: var(--leather);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: opacity 0.15s ease;
+}
+.btn-primary:hover {
+  opacity: 0.88;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--leather);
+}
