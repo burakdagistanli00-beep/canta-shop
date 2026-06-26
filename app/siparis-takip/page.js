@@ -95,7 +95,7 @@ function SiparisTakipIcerik() {
               </p>
               {result.trackingUrl && (
                 
-                  href={result.trackingUrl}
+                  <a href={result.trackingUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary inline-block"
