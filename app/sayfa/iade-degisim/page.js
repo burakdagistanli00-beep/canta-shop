@@ -6,7 +6,7 @@ export default function IadeDegisimPage() {
         <section>
           <h2 className="font-medium text-lg mb-2 text-ink">1. Cayma HakkÄ±</h2>
           <p>
-            6502 saxÄ±lÄ± TÃ¼keticinin KorunmasÄ± HakkÄ±nda Kanun ve Mesafeli SÃ¶zleÅŸmeler
+            6502 sayÄ±lÄ± TÃ¼keticinin KorunmasÄ± HakkÄ±nda Kanun ve Mesafeli SÃ¶zleÅŸmeler
             YÃ¶netmeliÄŸi kapsamÄ±nda, Ã¼rÃ¼nÃ¼ teslim aldÄ±ÄŸÄ±nÄ±z tarihten itibaren 14 (on dÃ¶rt)
             gÃ¼n iÃ§inde herhangi bir gerekÃ§e gÃ¶stermeksizin ve cezai ÅŸart Ã¶demeksizin
             sÃ¶zleÅŸmeden cayma hakkÄ±nÄ±z bulunmaktadÄ±r.
@@ -55,4 +55,16 @@ export default function IadeDegisimPage() {
         <section>
           <h2 className="font-medium text-lg mb-2 text-ink">6. Ä°stisnalar</h2>
           <p>
-            NiteliÄŸi itibarÄ±yla iade edilemeyecek Ã¼rÃ¼nler (Ã¶rn. kiËV}¥å”ƒÙé•°ƒñÉ•Ñ¥±•¸°(€€€€€€€€€€€¡¥©å•¸­ÕÉ…±±…ËÄÍ•‰•‰¥å±”…µ‰…±…«Ä‡ŸÅ±·Ç|­§-Yö—6VÂ·VÆÆìKÒ;Ç,;ÆæÆW&’’6–Ö¢†¶¼K¶6ÜKLKYüKæFLK"à¢Â÷à¢Â÷6V7F–öãà ¢Ç6Æ74æÖSÒ'FW‡B×6ÒFW‡BÖ–æ²óSBÓB#à¢6÷'VÆ,KìK¢œ:v–âÆ‡&VcÒ"ö–ÆWF—6–Ò"6Æ74æÖSÒ'VæFW&Æ–æR#æ–ÆWFœYö–ÓÂöâ6–fÜK¦Fâ&—¦RVÆYö&–Æ—'6–æ—¢à¢Â÷à¢ÂöF—cà¢ÂöF—cà¢“°§
+            NiteliÄŸi itibarÄ±yla iade edilemeyecek Ã¼rÃ¼nler (Ã¶rn. kiÅŸiye Ã¶zel Ã¼retilen,
+            hijyen kurallarÄ± sebebiyle ambalajÄ± aÃ§Ä±lmÄ±ÅŸ kiÅŸisel kullanÄ±m Ã¼rÃ¼nleri) cayma
+            hakkÄ± kapsamÄ± dÄ±ÅŸÄ±ndadÄ±r.
+          </p>
+        </section>
+
+        <p className="text-sm text-ink/50 pt-4">
+          SorularÄ±nÄ±z iÃ§in iletiÅŸim sayfamÄ±zdan bize ulaÅŸabilirsiniz.
+        </p>
+      </div>
+    </div>
+  );
+}
