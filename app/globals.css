@@ -1,79 +1,49 @@
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --leather: #4A2E1F;
-  --sand: #F6F1E7;
-  --ink: #14110F;
-  --brass: #A8814C;
-  --smoke: #6B6258;
+  --leather: #C9826B;
+  --sand: #FFFFFF;
+  --ink: #2B2B2B;
+  --brass: #C9826B;
+  --smoke: #8A8A8A;
 }
 
 body {
-  background: var(--sand);
+  background: #FAF8F6;
   color: var(--ink);
 }
 
 .btn-primary {
   background: var(--leather);
   color: #fff;
-  padding: 0.85rem 1.75rem;
-  border-radius: 0;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  padding: 0.75rem 1.75rem;
+  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   transition: all 0.2s ease;
   border: 1px solid var(--leather);
 }
 .btn-primary:hover {
-  background: transparent;
-  color: var(--leather);
+  opacity: 0.9;
 }
 
 .eyebrow {
-  font-size: 0.7rem;
-  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--brass);
-  font-weight: 500;
+  color: var(--leather);
+  font-weight: 600;
 }
 
-/* İmza öğe: deri dikişini andıran kesik ayraç */
 .stitch-divider {
   height: 1px;
-  background-image: repeating-linear-gradient(
-    to right,
-    var(--brass) 0,
-    var(--brass) 6px,
-    transparent 6px,
-    transparent 12px
-  );
-  opacity: 0.6;
+  background: rgba(0,0,0,0.08);
 }
 
 .brass-corners {
   position: relative;
-}
-.brass-corners::before,
-.brass-corners::after {
-  content: "";
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border: 1.5px solid var(--brass);
-  z-index: 10;
-}
-.brass-corners::before {
-  top: -1px;
-  left: -1px;
-  border-right: none;
-  border-bottom: none;
-}
-.brass-corners::after {
-  bottom: -1px;
-  right: -1px;
-  border-left: none;
-  border-top: none;
 }

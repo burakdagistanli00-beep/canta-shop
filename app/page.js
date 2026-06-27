@@ -20,15 +20,14 @@ export default async function HomePage({ searchParams }) {
 
   return (
     <div>
-      <section className="bg-ink text-sand">
-        <div className="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-14 items-center">
+      <section className="bg-white">
+        <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-14 items-center">
           <div>
-            <p className="eyebrow mb-5">El işçiliği · Hakiki Deri · 2026 Koleksiyonu</p>
-            <h1 className="font-display font-medium text-4xl md:text-6xl leading-[1.1] mb-7">
+            <p className="eyebrow mb-4">El İşçiliği · Hakiki Deri</p>
+            <h1 className="font-display font-bold text-4xl md:text-5xl leading-tight mb-6 text-ink">
               Her gün taşıdığın çanta, hikayeni de taşır.
             </h1>
-            <div className="stitch-divider w-24 mb-7" />
-            <p className="text-sand/70 mb-9 max-w-md leading-relaxed">
+            <p className="text-ink/60 mb-8 max-w-md leading-relaxed">
               Atölyemizde tek tek dikilen çantalarımız; sırt, el, omuz ve seyahat
               koleksiyonlarıyla her ana eşlik eder.
             </p>
@@ -36,30 +35,26 @@ export default async function HomePage({ searchParams }) {
               Koleksiyonu Gör
             </a>
           </div>
-          <div className="brass-corners aspect-square bg-leather/20 flex items-center justify-center p-12">
+          <div className="aspect-square bg-[#FAF8F6] rounded-lg flex items-center justify-center p-12">
             <img src="/images/placeholder-bag-1.svg" alt="Atölye Çanta" className="max-h-80" />
           </div>
         </div>
       </section>
 
-      <section id="koleksiyon" className="max-w-6xl mx-auto px-6 py-20">
-        <div className="flex items-center gap-4 mb-12">
-          <h2 className="font-display text-2xl">Koleksiyon</h2>
-          <div className="stitch-divider flex-1" />
-        </div>
+      <section id="koleksiyon" className="max-w-6xl mx-auto px-6 py-16">
+        <h2 className="font-display text-2xl font-bold mb-8 text-ink">Koleksiyon</h2>
         <div className="flex flex-wrap gap-3 mb-10">
-          <a
+          
             href="/"
-            className={`px-4 py-2 text-sm border transition-colors ${!kategoriSlug ? "border-leather text-leather" : "border-ink/15 hover:border-leather/50"}`}
+            className={`px-4 py-2 text-sm rounded-full border transition-colors ${!kategoriSlug ? "bg-ink text-white border-ink" : "border-ink/15 hover:border-ink/40"}`}
           >
             Tümü
           </a>
           {categories.map((c) => (
-
-              <a
-                key={c.id}
+            
+              key={c.id}
               href={`/?kategori=${c.slug}`}
-              className={`px-4 py-2 text-sm border transition-colors ${kategoriSlug === c.slug ? "border-leather text-leather" : "border-ink/15 hover:border-leather/50"}`}
+              className={`px-4 py-2 text-sm rounded-full border transition-colors ${kategoriSlug === c.slug ? "bg-ink text-white border-ink" : "border-ink/15 hover:border-ink/40"}`}
             >
               {c.name}
             </a>
