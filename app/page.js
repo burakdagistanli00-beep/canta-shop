@@ -45,7 +45,8 @@ export default async function HomePage({ searchParams }) {
         <h2 className="font-display text-2xl font-bold mb-8 text-ink">Koleksiyon</h2>
         <div className="flex flex-wrap gap-3 mb-10">
           
-            href="/"
+            <a
+              href="/"
             className={`px-4 py-2 text-sm rounded-full border transition-colors ${!kategoriSlug ? "bg-ink text-white border-ink" : "border-ink/15 hover:border-ink/40"}`}
           >
             Tümü
