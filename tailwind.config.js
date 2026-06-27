@@ -4,14 +4,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        leather: "#7a4f3a",
-        sand: "#f3ece2",
-        ink: "#241b15",
+        leather: "#4A2E1F",
+        sand: "#F6F1E7",
+        ink: "#14110F",
         olive: "#5f6b4f",
+        brass: "#A8814C",
+        smoke: "#6B6258",
       },
       fontFamily: {
-        display: ["Georgia", "serif"],
-        body: ["Helvetica Neue", "Arial", "sans-serif"],
+        display: ["Fraunces", "Georgia", "serif"],
+        body: ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
       },
     },
   },
