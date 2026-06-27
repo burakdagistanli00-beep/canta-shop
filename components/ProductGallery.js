@@ -6,8 +6,8 @@ export default function ProductGallery({ images, alt }) {
 
   return (
     <div>
-      <div className="aspect-[4/5] bg-white border border-ink/10 flex items-center justify-center mb-3">
-        <img src={images[active]} alt={alt} className="max-h-[90%]" />
+      <div className="aspect-[4/5] bg-white border border-ink/10 overflow-hidden mb-3">
+        <img src={images[active]} alt={alt} className="w-full h-full object-cover" />
       </div>
       {images.length > 1 && (
         <div className="flex gap-2">
@@ -15,11 +15,11 @@ export default function ProductGallery({ images, alt }) {
             <button
               key={i}
               onClick={() => setActive(i)}
-              className={`w-16 h-16 border ${
+              className={`w-16 h-16 border overflow-hidden ${
                 active === i ? "border-leather" : "border-ink/10"
-              } bg-white flex items-center justify-center`}
+              } bg-white`}
             >
-              <img src={img} alt={`${alt} ${i + 1}`} className="max-h-full max-w-full" />
+              <img src={img} alt={`${alt} ${i + 1}`} className="w-full h-full object-cover" />
             </button>
           ))}
         </div>
