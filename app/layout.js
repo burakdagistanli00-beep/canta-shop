@@ -14,8 +14,17 @@ export default function RootLayout({ children }) {
         <CartProvider>
           <Header />
           <main className="flex-1">{children}</main>
-          <footer className="border-t border-ink/10 mt-16 py-10 text-center text-sm text-ink/60">
-            © {new Date().getFullYear()} Atölye Çanta. Tüm hakları saklıdır.
+          <footer className="border-t border-ink/10 mt-16 py-10 text-sm text-ink/60">
+            <div className="max-w-6xl mx-auto px-6 flex flex-col items-center gap-4">
+              <nav className="flex flex-wrap gap-4 justify-center">
+                <a href="/sayfa/sss" className="hover:text-leather">Sıkça Sorulan Sorular</a>
+                <a href="/sayfa/iade-degisim" className="hover:text-leather">İade ve Değişim Şartları</a>
+                <a href="/sayfa/mesafeli-satis-sozlesmesi" className="hover:text-leather">Mesafeli Satış Sözleşmesi</a>
+                <a href="/sayfa/gizlilik-politikasi" className="hover:text-leather">Gizlilik Politikası</a>
+                <a href="/siparis-takip" className="hover:text-leather">Sipariş Takip</a>
+              </nav>
+              <p>© {new Date().getFullYear()} Atölye Çanta. Tüm hakları saklıdır.</p>
+            </div>
           </footer>
         </CartProvider>
       </body>
