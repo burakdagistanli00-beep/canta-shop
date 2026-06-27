@@ -56,7 +56,8 @@ export default async function HomePage({ searchParams }) {
           </a>
           {categories.map((c) => (
             
-              key={c.id}
+              <a
+                key={c.id}
               href={`/?kategori=${c.slug}`}
               className={`px-4 py-2 text-sm border transition-colors ${kategoriSlug === c.slug ? "border-leather text-leather" : "border-ink/15 hover:border-leather/50"}`}
             >
