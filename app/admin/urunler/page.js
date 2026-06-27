@@ -6,8 +6,11 @@ export default function AdminProductsPage() {
   const [products, setProducts] = useState(null);
   const [categories, setCategories] = useState([]);
   const [form, setForm] = useState({
-    name: "", description: "", price: "", stock: "", color: "", material: "", categoryId: "",
+    name: "", description: "", price: "", stock: "", color: "", material: "", categoryId: "", images: "",
   });
+  const [yeniKategori, setYeniKategori] = useState("");
+  const [kategoriEklemeAcik, setKategoriEklemeAcik] = useState(false);
+  const [kategoriHata, setKategoriHata] = useState("");
   const [error, setError] = useState("");
 
   async function load() {
@@ -20,13 +23,38 @@ export default function AdminProductsPage() {
     setProducts(data);
   }
 
+  async function loadCategories() {
+    const res = await fetch("/api/categories");
+    const data = await res.json();
+    setCategories(data);
+  }
+
   useEffect(() => {
     load();
-    fetch("/api/categories").then((r) => r.json()).then(setCategories).catch(() => {});
+    loadCategories();
   }, []);
 
   function update(field, value) {
     setForm((f) => ({ ...f, [field]: value }));
+  }
+
+  async function handleAddCategory(e) {
+    e.preventDefault();
+    setKategoriHata("");
+    const res = await fetch("/api/categories", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: yeniKategori }),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      setKategoriHata(data.error || "Kategori eklenemedi.");
+      return;
+    }
+    setYeniKategori("");
+    setKategoriEklemeAcik(false);
+    await loadCategories();
+    update("categoryId", data.id);
   }
 
   async function handleSubmit(e) {
@@ -42,7 +70,7 @@ export default function AdminProductsPage() {
       setError(data.error || "Ürün eklenemedi.");
       return;
     }
-    setForm({ name: "", description: "", price: "", stock: "", color: "", material: "", categoryId: "" });
+    setForm({ name: "", description: "", price: "", stock: "", color: "", material: "", categoryId: "", images: "" });
     load();
   }
 
@@ -63,11 +91,30 @@ export default function AdminProductsPage() {
       <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-4 mb-12 border border-ink/10 p-6">
         <input required placeholder="Ürün Adı" className="border border-ink/20 px-3 py-2"
           value={form.name} onChange={(e) => update("name", e.target.value)} />
-        <select required className="border border-ink/20 px-3 py-2"
-          value={form.categoryId} onChange={(e) => update("categoryId", e.target.value)}>
-          <option value="">Kategori Seç</option>
-          {categories.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
-        </select>
+
+        <div>
+          <div className="flex gap-2">
+            <select required className="border border-ink/20 px-3 py-2 flex-1"
+              value={form.categoryId} onChange={(e) => update("categoryId", e.target.value)}>
+              <option value="">Kategori Seç</option>
+              {categories.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
+            </select>
+            <button type="button" onClick={() => setKategoriEklemeAcik((v) => !v)}
+              className="border border-ink/20 px-3 hover:border-leather" title="Yeni kategori ekle">
+              + Yeni
+            </button>
+          </div>
+          {kategoriEklemeAcik && (
+            <div className="flex gap-2 mt-2">
+              <input placeholder="Yeni kategori adı" className="border border-ink/20 px-3 py-2 flex-1 text-sm"
+                value={yeniKategori} onChange={(e) => setYeniKategori(e.target.value)} />
+              <button type="button" onClick={handleAddCategory}
+                className="bg-leather text-white px-3 text-sm">Ekle</button>
+            </div>
+          )}
+          {kategoriHata && <p className="text-red-600 text-xs mt-1">{kategoriHata}</p>}
+        </div>
+
         <input required type="number" step="0.01" placeholder="Fiyat (TL)" className="border border-ink/20 px-3 py-2"
           value={form.price} onChange={(e) => update("price", e.target.value)} />
         <input required type="number" placeholder="Stok Adedi" className="border border-ink/20 px-3 py-2"
@@ -78,6 +125,18 @@ export default function AdminProductsPage() {
           value={form.material} onChange={(e) => update("material", e.target.value)} />
         <textarea required placeholder="Açıklama" className="border border-ink/20 px-3 py-2 md:col-span-2"
           value={form.description} onChange={(e) => update("description", e.target.value)} />
+        <div className="md:col-span-2">
+          <textarea
+            placeholder={"Görsel linkleri (her satıra bir link)\nörn: https://site.com/foto1.jpg"}
+            className="border border-ink/20 px-3 py-2 w-full text-sm"
+            rows={3}
+            value={form.images}
+            onChange={(e) => update("images", e.target.value)}
+          />
+          <p className="text-xs text-ink/40 mt-1">
+            Boş bırakırsan varsayılan görsel kullanılır. Birden fazla görsel eklemek için her birini yeni satıra yaz.
+          </p>
+        </div>
         {error && <p className="text-red-600 text-sm md:col-span-2">{error}</p>}
         <button className="btn-primary md:col-span-2">Ürün Ekle</button>
       </form>
@@ -114,3 +173,4 @@ export default function AdminProductsPage() {
     </div>
   );
 }
+

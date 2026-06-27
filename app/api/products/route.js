@@ -26,6 +26,11 @@ export async function POST(req) {
     .replace(/ö/g, "o").replace(/ş/g, "s").replace(/ü/g, "u")
     .replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
+  const images = (data.images || data.image || "")
+    .split("\n")
+    .map((s) => s.trim())
+    .filter(Boolean);
+
   const product = await prisma.product.create({
     data: {
       name: data.name,
@@ -33,7 +38,7 @@ export async function POST(req) {
       description: data.description,
       price: Math.round(parseFloat(data.price) * 100),
       stock: parseInt(data.stock, 10),
-      images: JSON.stringify([data.image || "/images/placeholder-bag-1.svg"]),
+      images: JSON.stringify(images.length ? images : ["/images/placeholder-bag-1.svg"]),
       color: data.color,
       material: data.material,
       featured: !!data.featured,

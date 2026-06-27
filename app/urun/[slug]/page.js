@@ -1,6 +1,7 @@
 import { prisma } from "../../../lib/db";
 import { formatPrice } from "../../../lib/format";
 import AddToCartButton from "../../../components/AddToCartButton";
+import ProductGallery from "../../../components/ProductGallery";
 import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
@@ -17,9 +18,7 @@ export default async function ProductPage({ params }) {
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-12">
-      <div className="aspect-[4/5] bg-white border border-ink/10 flex items-center justify-center">
-        <img src={images[0]} alt={product.name} className="max-h-[90%]" />
-      </div>
+      <ProductGallery images={images} alt={product.name} />
       <div>
         <p className="eyebrow mb-2">{product.category.name}</p>
         <h1 className="font-display text-3xl mb-4">{product.name}</h1>
