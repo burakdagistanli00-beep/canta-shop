@@ -48,14 +48,14 @@ export default async function HomePage({ searchParams }) {
           <div className="stitch-divider flex-1" />
         </div>
         <div className="flex flex-wrap gap-3 mb-10">
-          
+          <a
             href="/"
             className={`px-4 py-2 text-sm border transition-colors ${!kategoriSlug ? "border-leather text-leather" : "border-ink/15 hover:border-leather/50"}`}
           >
             Tümü
           </a>
           {categories.map((c) => (
-            
+
               <a
                 key={c.id}
               href={`/?kategori=${c.slug}`}
